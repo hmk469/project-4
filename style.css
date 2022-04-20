@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Courgette', cursive;}
+    font-family: 'Courgette', cursive;
+    scroll-behavior: smooth;
+}
 
 /* nav   */
 
@@ -64,7 +66,7 @@ nav .search i{
     position: absolute;
     background-color: rgb(221, 163, 56);
     width: 30%;
-    height: 100vh;
+    height: 90vh;
     right: 0;
     margin-top: -10%;
     z-index:-1 ;
@@ -74,15 +76,33 @@ nav .search i{
     float: right;
     width: 50%;
     margin-top: -5%;
+    animation:right .5s;
+}
+@keyframes right{
+    from{
+        margin-right: -100%;
+    }
+    to{
+        margin-right: 0%;
+    }
 }
 #Home .context{
     width: 45%;
+    animation: left 1s ;
+}
+@keyframes left{
+    from{
+        margin-left: -100%;
+    }
+    to{
+        margin-left: 0%;
+    }
 }
 #Home .context span{
     color: orange;
     font-weight: 900;
 }
-#Home .context button{
+#Home  button{
     background-color: orange;
     color: white;
     margin-top: 5%;
@@ -91,6 +111,15 @@ nav .search i{
     border-radius: 15px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     cursor: pointer;
+    animation: button 2s  ;
+}
+@keyframes button {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 #Home .context button:hover{
     transform: scale(1.1);
@@ -99,9 +128,168 @@ nav .search i{
 /* About  */
 
 #About{
-    margin: 20% 5%;
+    padding: 20% 0%;
 }
 #About h3{
     text-align: center;
+}
+
+#About .card1,#About .card2{
+    position: relative;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin: 5% 10%;
+    width: 80%;
+}
+#About .card1 p,#About .card2 p{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 6% 5%;
+}
+#About  .card1 img,.card2 img{
+    width: 350px;
+    height: 190px;
+    border-radius: 10px;
+    transition: ease-in-out;
+}
+#About .card1 img{
+    float: left;
+    padding-right: 5%;
+}
+#About .card2 img{
+    float: right;
+    padding-left: 5%;
+}
+
+/* ourservice  */
+
+#About .ourservice{
+    background-color: rgb(238, 185, 87);
+    height: 300vh;
+    width: 100vw;
+    padding: 3% 5%;
+}
+.ourservice h2{
+    text-align: center;
+    color: white;
+}
+.ourservice .cards{
+    display: flex;
+    padding: 3%;
+}
+.ourservice .cards .card{
+    width: 100%;
+    padding: 2% 0;
+    background-color: white;
+    margin: 0 1%;
+    text-align: center;
+}
+
+.ourservice .cards p{
+    font-size: 14px;
+}
+.ourservice .cards .card-5{
+    animation: card5  5s ;  
+}
+@keyframes card5{
+    0%{
+        opacity: 0;
+    }
+    100%{
+     opacity: 1;
+ }
+}
+.ourservice .cards .card-4{
+    animation: card4 4s ;
     
+}
+@keyframes card4{
+    0%{
+        opacity: 0;
+    }
+    100%{
+     opacity: 1;
+ }
+}
+.ourservice .cards .card-3{
+    animation: card3 3s ;
+    
+}
+@keyframes card3{
+   0%{
+       opacity: 0;
+   }
+   100%{
+    opacity: 1;
+}
+    
+}
+.ourservice .cards .card-2{
+    animation: card2 2s ;
+    
+}
+@keyframes card2{
+    0%{
+        opacity: 0;
+    }
+    100%{
+     opacity: 1;
+ }
+}
+.ourservice .cards .card-1{
+    animation: card1 1s ;
+    
+}
+@keyframes card1{
+    0%{
+        opacity: 0;
+    }
+    100%{
+     opacity: 1;
+ }
+}
+
+/* work  */
+
+#About .work{
+    margin: 5% -5%;
+    padding: 3% 10%;
+    background-color: rgb(247, 245, 243);
+    height:80vh;
+    color: black;
+}
+#About .work h2{
+    color: black;
+}
+.work .intro{
+    text-align: center;
+}
+.work .intro img{
+   width: 3%;
+   align-items: center;
+}
+.work .intro h2{
+    color: black;
+}
+#About .works{
+    margin: 3% 0;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 50px;
+}
+#About .works img{
+    width:120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 1% 35%;
+}
+#About .works button{
+    outline: none;
+    border-style: none;
+    background-color: orange;
+    color: white;
+    margin: 5% 0;
+    padding: 2% 3%;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
