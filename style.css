@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -5,21 +6,25 @@
     font-family: 'Courgette', cursive;
     scroll-behavior: smooth;
 }
-
 /* nav   */
 
 nav{
+    position: fixed;
+    width: 100%;
+    background-color: white;
     padding: 1% 5%;
+    justify-content: space-between;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    z-index: 1;
 }
 nav .logo{
     font-weight: 900;
+    color: orange;
 }
 nav .menu {
+    position: relative;
     width: 60%;
-    margin-left: 20%;
+    margin-left: 10%;
 }
 nav .menu ul{
     list-style: none;
@@ -46,36 +51,99 @@ nav .search input{
     outline: none;
     border-style: none;
     background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
 }
 nav .search i{
     position: relative;
      background-color: rgb(255, 123, 0);
-   padding: 5px 8px;
+     padding: 3% 4%;
+     font-size: 15px;
+     justify-content: center;
    border-radius: 50%;
    color: white;
    margin-left: -10%;
-   font-size: 13px;
    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+/* Hanbargar-Menu  */
+
+.menu-slide{
+    display: none;
+}
+.hanbargar{
+   display: none;
+   cursor: pointer;
+   transition: .5s ease-in-out;
+}
+.hanbargar i{
+    font-size: 20px;
+}
+
+/* slide-bar  */
+.slide-bar{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 110vh;
+    right: 0;
+    background-color: black;
+    width: 25%;
+    color: white;
+    
+}   
+.slide-bar ul{
+    list-style: none;
+}
+.slide-bar ul li{
+    display: block;
+    margin: 0 2%;
+    text-align: center;
+}
+.slide-bar ul li a{
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    font-size: 25px;
+    line-height: 80px;
+}
+.close{
+    position: relative;
+    top: 0;
+    right: 0;
+    color: white;
+    text-align: center;
+    transition: .5s ease-in-out;
+
+}
+.close i{
+    font-size: 25px;
+}
+/* media screen  */
+@media screen and (max-width:900px){
+    nav .menu{
+        display: none;
+    }
+    .hanbargar{
+        display: block;
+     }
+     nav .search{
+         width: 40%;
+     }
+     nav .search i{
+        margin-left: -5%;
+     }
+    
 }
 /* Home   */
 
 #Home{
-    margin: 5%;
+    padding: 10% 5%;
 }
-#Home .bg{
-    position: absolute;
-    background-color: rgb(221, 163, 56);
-    width: 30%;
-    height: 90vh;
-    right: 0;
-    margin-top: -10%;
-    z-index:-1 ;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
+
 #Home img {
     float: right;
     width: 50%;
-    margin-top: -5%;
     animation:right .5s;
 }
 @keyframes right{
@@ -113,6 +181,10 @@ nav .search i{
     cursor: pointer;
     animation: button 2s  ;
 }
+#Home  button:hover{
+    background-color: black;
+    transition: 1s;
+}
 @keyframes button {
     from{
         opacity: 0;
@@ -125,12 +197,30 @@ nav .search i{
     transform: scale(1.1);
 }
 
+@media screen and (max-width:750px) {
+    #Home img {      
+        display:none ;
+    }
+    #Home .bg{
+       display: none;
+    }
+    #Home .context{
+        margin-top: 5%;
+        width: 100%;
+        margin: 0 10%;
+        animation: left 1s ;
+    }
+    #Home  button{
+        margin-left: 55%;
+    }
+   
+}
 /* About  */
 
 #About{
-    padding: 20% 0%;
+    padding: 10% 0;
 }
-#About h3{
+#About h1{
     text-align: center;
 }
 
@@ -161,12 +251,25 @@ nav .search i{
     padding-left: 5%;
 }
 
+@media screen and (max-width:790px){
+    #About  .card1 img,.card2 img{
+        float: none;
+        width: 100%;
+        height: 350px;
+    }
+    #About .card1,#About .card2{
+        position: relative;
+        align-items: center;
+        margin:0 20%;
+
+    }
+}
 /* ourservice  */
 
 #About .ourservice{
     background-color: rgb(238, 185, 87);
-    height: 300vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     padding: 3% 5%;
 }
 .ourservice h2{
@@ -180,13 +283,16 @@ nav .search i{
 .ourservice .cards .card{
     width: 100%;
     padding: 2% 0;
+    margin: 3% 1%;
     background-color: white;
-    margin: 0 1%;
     text-align: center;
 }
 
 .ourservice .cards p{
     font-size: 14px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
 }
 .ourservice .cards .card-5{
     animation: card5  5s ;  
@@ -213,7 +319,6 @@ nav .search i{
 }
 .ourservice .cards .card-3{
     animation: card3 3s ;
-    
 }
 @keyframes card3{
    0%{
@@ -248,14 +353,20 @@ nav .search i{
      opacity: 1;
  }
 }
-
+@media screen and (max-width:950px){
+    .ourservice .cards{
+       flex-wrap: wrap;
+       width: 60%;
+       margin-left: 20%;
+    }
+}
 /* work  */
 
 #About .work{
-    margin: 5% -5%;
+    margin: 0% -5%;
     padding: 3% 10%;
     background-color: rgb(247, 245, 243);
-    height:80vh;
+    height:100%;
     color: black;
 }
 #About .work h2{
@@ -277,11 +388,14 @@ nav .search i{
     grid-template-columns: repeat(3,1fr);
     grid-gap: 50px;
 }
+#About .works p{
+   text-align: justify;
+}
 #About .works img{
     width:120px;
     height: 120px;
     border-radius: 50%;
-    margin: 1% 35%;
+    margin: 1% 30%;
 }
 #About .works button{
     outline: none;
@@ -292,4 +406,463 @@ nav .search i{
     padding: 2% 3%;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@media screen and (max-width:890px){
+    #About .works{
+        margin:  0;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-gap: 10px;
+    }
+    #About .works img{
+        width:150px;
+        height: 150px;
+      
+    }
+}
+/* Menu  */
+
+#Menu{
+    background-color: rgb(238, 185, 87);
+    height: 100%;
+    margin-top: -10%;
+}
+#Menu h1{
+   text-align: center;
+}
+#Menu .MenuCard{
+    padding: 0 5%;
+    text-align: justify;
+}
+#Menu .MenuCard img{
+   float: left;
+   width: 40%;
+   height: 350px;
+   margin-right: 5%;
+   border-radius: 10px;
+}
+#Menu .MenuCard h2{
+    color: black;
+    text-align: left;
+    padding: 1% 0;
+}
+@media screen and (max-width:580px){
+    #Menu .MenuCard img{
+        margin: 2% 0;
+        float: none;
+        width: 100%;
+     }
+}
+/* Menu-images  */
+
+#Menu .images{
+    margin: 0% 5%;
+    padding: 2% 5%;
+    border-radius: 10px;
+    width: 90%;
+    background-color: wheat;
+    display: flex;
+    justify-content:space-around;
+}
+#Menu .images img{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
+@media screen and (max-width:850px){
+    #Menu .images img{
+        width: 100px;
+        height: 100px;
+    }
+}
+@media screen and (max-width:700px){
+    #Menu .images img{
+        width: 90px;
+        height: 90px;
+    }
+}
+@media screen and (max-width:600px){
+    #Menu .images img{
+        width: 80px;
+        height: 80px;
+    }
+}
+@media screen and (max-width:500px){
+    #Menu .images img{
+        width: 70px;
+        height: 70px;
+    }
+}
+@media screen and (max-width:450px){
+    #Menu .images img{
+        width: 60px;
+        height: 60px;
+    }
+}
+@media screen and (max-width:400px){
+    #Menu .images img{
+        width: 50px;
+        height: 50px;
+    }
+}
+/* Deserts  */
+.Desserts{
+    padding: 3% 0;
+}
+.Desserts h1{
+    text-align: center;
+}
+.Desserts .cards{
+    padding: 3% ;
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
+}
+.Desserts .cards div{
+    width: 250px;
+}
+.Desserts .cards div img{
+    width: 90%;
+    height: 200px;
+    margin: 3% 0;
+}
+.Desserts .cards div{
+    text-align: center;
+    width: 100%;
+    padding: 3% 0 ;
+}
+.Desserts .cards div:nth-child(odd){
+    background-color: rgb(196, 89, 13);
+    color: white;
+}
+.Desserts .cards div:nth-child(even){
+    background-color: rgb(226, 196, 175);
+}
+
+@media screen and (max-width:900px){
+    .Desserts .cards div img{
+        width: 90%;
+        height: 180px;
+    }
+}
+@media screen and (max-width:720px){
+    .Desserts .cards div {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:500px){
+    .Desserts .cards{
+        flex-wrap: wrap;
+        font-size: 15px;
+    }
+    .Desserts .cards div img{
+        width: 90%;
+        height: 300px;
+    }
+}
+/* Search box  */
+.Search{
+    background-image: url("https://cdn.bhdw.net/im/coffee-cup-wallpaper-11013_w635.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    padding: 15% 10%;
+    color: white;
+}
+.Search h2{
+    margin-bottom: 1%;
+}
+.Search input{
+    width: 30%;
+    height: 30px;
+    border-radius: 20px;
+    padding:0 1%;
+    outline: none;
+    border-style: outset;
+}
+.Search button{
+    background-color: orange;
+    border-radius: 20px;
+    color: white;
+    padding: 5px 8px;
+    border-style: none;
+}
+.Search button:hover{
+    background-color: black;
+    transition: 1s;
+}
+
+/* Find  */
+
+#Find {
+   padding: 0 3%;
+   width: 100%;
+    background-color: rgb(238, 185, 87);
+    height: 110vh;
+}
+#Find h1{
+    text-align: center;
+    padding: 3% 0;
+    text-transform: uppercase;
+}
+.FindCard{
+    display: flex;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+}
+
+.map .gmap_canvas{
+    border-radius: 10px;
+}
+.FindCard .card{
+    margin: 2% 5% ;
+    padding: 5% 0%;
+    line-height: 40px;
+    width: 100%;
+}
+.FindCard .card img{
+    width: 25px;
+    margin-right: 3%;
+}
+.weekends{
+    padding-left: 8%;
+}
+
+/* Icons  */
+
+.icons{
+    margin-top: 10%;
+}
+
+@media screen and (max-width:1105px){
+    #Find {
+         height: 75vh;
+     } 
+     #Find .gmap_canvas{
+        width: 500px;
+    }
+    .FindCard .card{
+        margin-left: -5%;
+    }
+}
+@media screen and (max-width:1000px){
+    #Find .gmap_canvas{
+        width: 450px;
+    }
+    .FindCard .card{
+        margin-left: -8%;
+    }
+}
+@media screen and (max-width:965px){
+    #Find .gmap_canvas{
+        width: 400px;
+    }
+    .FindCard .card{
+        margin-left: -20%;
+    }
+}
+@media screen and (max-width:865px){
+    #Find .gmap_canvas{
+        width: 350px;
+    }
+    .FindCard .card{
+        margin-left: -25%;
+    }
+}
+@media screen and (max-width:830px){
+    #Find { 
+         height: 125vh;
+    }
+    .FindCard{
+        flex-wrap: wrap;
+    }
+    #Find .gmap_canvas{
+        width: 100%;
+        padding: 3% 5%;
+    }
+    .FindCard .card{
+        margin-left: 25%;
+    }
+}
+@media screen and (max-width:615px){
+    #Find .gmap_canvas{
+        width: 95%;
+        padding: 3% 5%;
+    }
+}
+@media screen and (max-width:590px){
+    #Find .gmap_canvas{
+        width: 90%;
+        padding: 3% 5%;
+    }
+}
+@media screen and (max-width:560px){
+    #Find .gmap_canvas{
+        width: 85%;
+        height: 90%;
+        padding: 3% 5%;
+    }
+    .FindCard .card{
+       margin-top: -10%;
+    }
+}
+@media screen and (max-width:530px){
+    #Find .gmap_canvas{
+        width: 80%;
+        padding: 3% 5%;
+    }
+}
+@media screen and (max-width:500px){
+    #Find .gmap_canvas{
+        width: 75%;
+        padding: 3% 5%;
+    }
+}
+@media screen and (max-width:470px){
+    #Find .gmap_canvas{
+        width: 70%;
+        padding: 2% 5%;
+    }
+}
+@media screen and (max-width:430px){
+    #Find .gmap_canvas{
+        width: 65%;
+        height: 80%;
+    }
+    .FindCard .card{
+        margin-top: -25%;
+     }
+}
+@media screen and (max-width:400px){
+    #Find .gmap_canvas{
+        width: 60%;
+        height: 80%;
+    }
+    .FindCard .card{
+        margin-top: -25%;
+     }
+}
+@media screen and (max-width:370px){
+    #Find .gmap_canvas{
+        width: 55%;
+        height: 70%;
+    }
+    .FindCard .card{
+        margin-top: -35%;
+     }
+}
+/* Contact  */
+
+#Contact{
+    width: 100%;
+    margin: 2% 0;
+    padding: 2% 5%;
+}
+#Contact h1{
+    text-align: center;
+}
+#Contact .cards{
+    display: flex;
+    width: 100%;
+}
+#Contact .cards img{
+    width: 500px;
+    height: 500px;
+}
+#Contact form{
+    width: 100%;
+   margin: 20% 5%;
+   line-height: 40px;
+   width: 50%;
+}
+#Contact form input,#Contact form textarea{
+    width: 350px;
+    padding: 2% 5%;
+    border: 1px solid orange;
+}
+#Contact .context{
+    margin-left: 20%;
+}
+#Contact .context h4{
+    text-transform: uppercase;
+    color: orange;
+}
+#Contact button{
+    background-color: orange;
+    color: white;
+    width: 350px;
+    text-align: center;
+    outline: none;
+    border-style: none;
+    padding: 3%;
+}
+@media screen and (max-width:960px){
+    #Contact .cards img{
+        width: 450px;
+        height: 450px;
+    }
+}
+@media screen and (max-width:900px){
+    #Contact .cards img{
+        width: 400px;
+        height: 400px;
+    }
+}
+@media screen and (max-width:850px){
+    #Contact{
+        padding: 2% 3%;
+    }
+    #Contact .cards img{
+        width: 350px;
+        height: 350px;
+    }
+    
+}
+@media screen and (max-width:750px){
+    #Contact .cards img{
+        width: 300px;
+        height: 300px;
+    }
+    #Contact button{
+        width: 300px;
+    }
+}
+@media screen and (max-width:700px){
+    #Contact .cards{
+       flex-wrap: wrap;
+    }
+    #Contact .cards .card1{
+        width: 100%;
+        margin: 3% 20%;
+    }
+    #Contact .cards form{
+        margin: 0% 30%;
+    }
+}
+@media screen and (max-width:550px){
+
+    #Contact .cards .card1{
+        width: 100%;
+        margin: 3% 10%;
+    }
+    #Contact .cards form{
+        margin: 0% 10%;
+    }
+    #Contact form input,#Contact form textarea{
+        width: 300px;
+        padding: 2% 5%;
+    }
+}
+/* footer  */
+
+footer{
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
 }
